@@ -138,7 +138,7 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
 		  String sentence  = (String) iterS.next();
 		  scoreList.clear();
       ID ++;
-      System.out.println(ID);
+      
       iterQ = qIdList.iterator();
       iterR = relList.iterator();
       iterM = mapList.iterator();
@@ -149,9 +149,9 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
 		    int  rel = (Integer) iterR.next();
 		    Map <String,Integer> docVector = (Map<String,Integer>) iterM.next();
 		    if (qid== ID && rel <99){
-	//	      double score = computeCosineSimilarity(queryVector,docVector);
+		      //double score = computeCosineSimilarity(queryVector,docVector);
 		      double score = computeDiceCoefficient(queryVector,docVector);
-		      System.out.println("qid="+ qid+ "rel" + rel +" score " +score);
+		      
 		      scoreList.add(score);
 		      if (rel == 1){
 		        trScore = score;
@@ -175,7 +175,11 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
     while (itRank.hasNext()){
       size ++;
       int rank = (Integer) itRank.next();
-      mrr += 1/rank;
+      
+      double delta = (double) rank;
+      delta = 1/delta;
+      
+      mrr += delta;
       
     }
     mrr = mrr/size;
