@@ -105,4 +105,8 @@
 			</plugin>
 		</plugins>
 	</build>
+	<scm>
+		<connection>scm:git:git@github.com:jingweishen/hw4-js1.git</connection>
+		<developerConnection>scm:git:git@github.com:jingweishen/hw4-js1.git</developerConnection>
+	</scm>
 </project>
